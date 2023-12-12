@@ -16,3 +16,44 @@ body {
   text-transform: uppercase;
   margin: 10px 0;
 }
+input {
+  width: 100%;
+  height: 30px;
+  outline: none;
+  border: none;
+  background-color: #111;
+  margin: 4px 0;
+  border-radius: 5px;
+  padding: 5px;
+  color: #fff;
+}
+input:focus {
+  background-color: #000;
+  transform: scale(1.005);
+}
+.price input {
+  width: 20%;
+}
+#total {
+  background-color: #a00d02;
+  padding: 5px 2px;
+  border-radius: 4px;
+}
+#total::before {
+  content: "Total: ";
+}
+button {
+  width: 100%;
+  height: 30px;
+  border: 0;
+  cursor: pointer;
+  background-color: #390053;
+  color: #fff;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+button:hover {
+
+  background-color: #51025f;
+  letter-spacing: 1px;
+}
