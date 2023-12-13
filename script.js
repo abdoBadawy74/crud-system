@@ -90,7 +90,7 @@ submit.addEventListener("click", clear);
 
 function display() {
   let table = "";
-
+  document.getElementById("tbody").innerHTML = "";
   for (let i = 0; i < dataPros.length; i++) {
     table = dataPros[i];
 
@@ -106,11 +106,21 @@ function display() {
         <td>${dataPros[i].total}</td>
         <td>${dataPros[i].category}</td>
         <td><button id="update">Update</button></td>
-        <td><button id="delete">Delete</button></td>
+        <td><button id="delete" onclick="deletePro(${i})">Delete</button></td>
         </tr>
   `;
   }
 }
 
 submit.addEventListener("click", display);
-display()
+display();
+
+
+// delete product
+
+function deletePro(i) {
+
+  dataPros.splice(i, 1);
+  localStorage.product = JSON.stringify(dataPros);
+  display();
+}
