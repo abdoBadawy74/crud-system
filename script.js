@@ -36,10 +36,10 @@ function getTotal() {
   if (price.value != "" && taxes.value != "" && ads.value != "") {
     let result = +price.value + +taxes.value + +ads.value - +discount.value;
     total.innerHTML = result;
-    total.style.background = "#040";
+    total.style.background = "#00B38F";
   } else {
     total.innerHTML = "";
-    total.style.background = "#a00d02";
+    total.style.background = "#f61504";
   }
 }
 
@@ -68,7 +68,12 @@ submit.onclick = function () {
     category: category.value.toLowerCase(),
   };
   // check data
-  if (title.value != "" && price.value != "" && category.value != "" && newpro.count <= 100) {
+  if (
+    title.value != "" &&
+    price.value != "" &&
+    category.value != "" &&
+    newpro.count <= 100
+  ) {
     if (mood === "create") {
       // count
       if (newpro.count > 1) {
@@ -105,7 +110,6 @@ function clear() {
   category.value = "";
 }
 
-
 // display product in table
 
 function display() {
@@ -116,7 +120,7 @@ function display() {
     document.getElementById("tbody").innerHTML += `
   
         <tr>
-        <td>${i+1}</td>
+        <td>${i + 1}</td>
         <td>${dataPros[i].title}</td>
         <td>${dataPros[i].price}</td>
         <td>${dataPros[i].taxes}</td>
@@ -240,3 +244,12 @@ function searchData(value) {
 }
 
 // clean data
+
+// light mode
+
+let mode = "light";
+let modeBtn = document.querySelector(".dark-mode");
+
+modeBtn.addEventListener("click", function () {
+  document.body.classList.toggle("dark");
+});

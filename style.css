@@ -35,25 +35,26 @@ input:focus {
   width: 20%;
 }
 #total {
-  background-color: #a00d02;
+  background-color: #f61504;
   padding: 5px 2px;
   border-radius: 4px;
 }
 #total::before {
   content: "Total: ";
+  padding: 3px;
 }
 button {
   width: 100%;
   height: 30px;
   border: 0;
   cursor: pointer;
-  background-color: #390053;
+  background-color: #00c896;
   color: #fff;
   border-radius: 20px;
   transition: 0.3s;
 }
 button:hover {
-  background-color: #51025f;
+  background-color: #247d66;
   letter-spacing: 1px;
 }
 .btnSearch {
@@ -76,4 +77,32 @@ table th {
 }
 th td {
   padding: 5px;
+}
+.dark-mode {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #fff;
+  color: #000;
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.dark {
+  background-color: #fff;
+  color: #000;
+}
+.dark input {
+  background-color: #eee;
+  color: #000;
+}
+.dark .dark-mode {
+  background-color: #000;
+  color: #fff;
 }

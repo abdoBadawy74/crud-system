@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Crud System</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
@@ -49,10 +53,19 @@
 
       <div class="outputs">
         <div class="searchBlock">
-          <input onkeyup="searchData(this.value)" type="text" id="search" placeholder="search" />
+          <input
+            onkeyup="searchData(this.value)"
+            type="text"
+            id="search"
+            placeholder="search"
+          />
           <div class="btnSearch">
-            <button onclick="getSearchMood(this.id)" id="searchTitle">Search By Title</button>
-            <button onclick="getSearchMood(this.id)" id="searchCategory">Search By Category</button>
+            <button onclick="getSearchMood(this.id)" id="searchTitle">
+              Search By Title
+            </button>
+            <button onclick="getSearchMood(this.id)" id="searchCategory">
+              Search By Category
+            </button>
           </div>
           <div id="deleteAll"></div>
           <table>
@@ -72,6 +85,9 @@
           </table>
         </div>
       </div>
+    </div>
+    <div class="dark-mode">
+      <i class="fa-solid fa-moon"></i>
     </div>
     <script src="./script.js"></script>
   </body>
