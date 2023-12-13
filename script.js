@@ -39,3 +39,34 @@ function getTotal() {
     total.style.background = "#a00d02";
   }
 }
+
+// create product
+
+let datapros;
+
+// check localStorage is empty or not
+if (localStorage.product != null) {
+  datapros = JSON.parse(localStorage.product);
+} else {
+  datapros = [];
+}
+// this step to remain data in localStorage after reload
+
+submit.onclick = function () {
+  // creating object to save all data of product.
+  let newpro = {
+    title: title.value,
+    price: price.value,
+    taxes: taxes.value,
+    ads: ads.value,
+    discount: discount.value,
+    total: total.innerHTML,
+    count: count.value,
+    category: category.value,
+  };
+  // add product to array
+  datapros.push(newpro);
+
+  //   add array to local storage
+  localStorage.setItem("product", JSON.stringify(datapros));
+};
