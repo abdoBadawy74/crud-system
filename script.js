@@ -58,14 +58,14 @@ if (localStorage.product != null) {
 submit.onclick = function () {
   // creating object to save all data of product.
   let newpro = {
-    title: title.value,
+    title: title.value.toLowerCase(),
     price: price.value,
     taxes: taxes.value,
     ads: ads.value,
     discount: discount.value,
     total: total.innerHTML,
     count: count.value,
-    category: category.value,
+    category: category.value.toLowerCase(),
   };
   // add product to array
 
@@ -176,4 +176,63 @@ function updateData(i) {
     top: 0,
     behavior: "smooth",
   });
+}
+
+// search
+
+let moodSearch = "title";
+
+function getSearchMood(id) {
+  let search = document.getElementById("search");
+  if (id == "searchTitle") {
+    moodSearch = "title";
+  } else {
+    moodSearch = "category";
+  }
+  search.placeholder = "Search By " + moodSearch;
+  search.focus();
+  search.value = "";
+  display();
+}
+
+function searchData(value) {
+  let table = "";
+  for (let i = 0; i < dataPros.length; i++) {
+    if (moodSearch == "title") {
+      if (dataPros[i].title.includes(value.toLowerCase())) {
+        table += `
+        <tr>
+          <td>${i}</td>
+          <td>${dataPros[i].title}</td>
+          <td>${dataPros[i].price}</td>
+          <td>${dataPros[i].taxes}</td>
+          <td>${dataPros[i].ads}</td>
+          <td>${dataPros[i].discount}</td>
+          <td>${dataPros[i].total}</td>
+          <td>${dataPros[i].category}</td>
+          <td><button id="update" onclick="updateData(${i})">Update</button></td>
+          <td><button id="delete" onclick="deletePro(${i})">Delete</button></td>
+        </tr>
+`;
+      }
+    } else {
+      if (dataPros[i].category.includes(value.toLowerCase())) {
+        table += `
+        <tr>
+          <td>${i}</td>
+          <td>${dataPros[i].title}</td>
+          <td>${dataPros[i].price}</td>
+          <td>${dataPros[i].taxes}</td>
+          <td>${dataPros[i].ads}</td>
+          <td>${dataPros[i].discount}</td>
+          <td>${dataPros[i].total}</td>
+          <td>${dataPros[i].category}</td>
+          <td><button id="update" onclick="updateData(${i})">Update</button></td>
+          <td><button id="delete" onclick="deletePro(${i})">Delete</button></td>
+        </tr>
+`;
+      }
+    }
+  }
+  document.getElementById("tbody").innerHTML = table;
 }
