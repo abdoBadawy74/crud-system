@@ -68,7 +68,7 @@ submit.onclick = function () {
     category: category.value.toLowerCase(),
   };
   // check data
-  if (title.value != "" && price.value != "" && category.value != "") {
+  if (title.value != "" && price.value != "" && category.value != "" && newpro.count <= 100) {
     if (mood === "create") {
       // count
       if (newpro.count > 1) {
@@ -85,6 +85,7 @@ submit.onclick = function () {
       submit.innerHTML = "create";
       count.style.display = "block";
     }
+    clear();
   }
 
   //   add array to local storage
@@ -104,7 +105,6 @@ function clear() {
   category.value = "";
 }
 
-submit.addEventListener("click", clear);
 
 // display product in table
 
@@ -116,7 +116,7 @@ function display() {
     document.getElementById("tbody").innerHTML += `
   
         <tr>
-        <td>${i}</td>
+        <td>${i+1}</td>
         <td>${dataPros[i].title}</td>
         <td>${dataPros[i].price}</td>
         <td>${dataPros[i].taxes}</td>
