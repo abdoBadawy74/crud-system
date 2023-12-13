@@ -42,13 +42,13 @@ function getTotal() {
 
 // create product
 
-let datapros;
+let dataPros;
 
 // check localStorage is empty or not
 if (localStorage.product != null) {
-  datapros = JSON.parse(localStorage.product);
+  dataPros = JSON.parse(localStorage.product);
 } else {
-  datapros = [];
+  dataPros = [];
 }
 // this step to remain data in localStorage after reload
 
@@ -65,8 +65,23 @@ submit.onclick = function () {
     category: category.value,
   };
   // add product to array
-  datapros.push(newpro);
+  dataPros.push(newpro);
 
   //   add array to local storage
-  localStorage.setItem("product", JSON.stringify(datapros));
+  localStorage.setItem("product", JSON.stringify(dataPros));
 };
+
+// clear data in inputs
+
+function clear() {
+  title.value = "";
+  price.value = "";
+  ads.value = "";
+  taxes.value = "";
+  discount.value = "";
+  total.innerHTML = "";
+  count.value = "";
+  category.value = "";
+}
+
+submit.addEventListener("click", clear);
