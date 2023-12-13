@@ -110,17 +110,33 @@ function display() {
         </tr>
   `;
   }
+
+  let deleteAllBtn = document.getElementById("deleteAll");
+
+  if (dataPros.length > 0) {
+    deleteAllBtn.innerHTML = `
+    <button onclick="deleteAll()">Delete All</button>
+    `;
+  } else {
+    deleteAllBtn.innerHTML = "";
+  }
 }
 
 submit.addEventListener("click", display);
 display();
 
-
 // delete product
 
 function deletePro(i) {
-
   dataPros.splice(i, 1);
   localStorage.product = JSON.stringify(dataPros);
+  display();
+}
+
+// delete all products
+
+function deleteAll() {
+  localStorage.clear();
+  dataPros.splice(0);
   display();
 }
