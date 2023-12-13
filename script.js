@@ -85,3 +85,32 @@ function clear() {
 }
 
 submit.addEventListener("click", clear);
+
+// display product in table
+
+function display() {
+  let table = "";
+
+  for (let i = 0; i < dataPros.length; i++) {
+    table = dataPros[i];
+
+    document.getElementById("tbody").innerHTML += `
+  
+        <tr>
+        <td>${i}</td>
+        <td>${dataPros[i].title}</td>
+        <td>${dataPros[i].price}</td>
+        <td>${dataPros[i].taxes}</td>
+        <td>${dataPros[i].ads}</td>
+        <td>${dataPros[i].discount}</td>
+        <td>${dataPros[i].total}</td>
+        <td>${dataPros[i].category}</td>
+        <td><button id="update">Update</button></td>
+        <td><button id="delete">Delete</button></td>
+        </tr>
+  `;
+  }
+}
+
+submit.addEventListener("click", display);
+display()
