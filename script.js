@@ -27,6 +27,9 @@ let category = document.getElementById("category");
 
 let submit = document.getElementById("submit");
 
+let mood = "create";
+
+let tmp;
 // get total function
 
 function getTotal() {
@@ -66,13 +69,20 @@ submit.onclick = function () {
   };
   // add product to array
 
-  // count
-  if (newpro.count > 1) {
-    for (let i = 0; i < newpro.count; i++) {
+  if (mood === "create") {
+    // count
+    if (newpro.count > 1) {
+      for (let i = 0; i < newpro.count; i++) {
+        dataPros.push(newpro);
+      }
+    } else {
       dataPros.push(newpro);
     }
   } else {
-    dataPros.push(newpro);
+    dataPros[tmp] = newpro;
+    mood = "create";
+    submit.innerHTML = "create";
+    count.style.display = "block";
   }
 
   //   add array to local storage
@@ -97,11 +107,10 @@ submit.addEventListener("click", clear);
 // display product in table
 
 function display() {
-  let table = "";
+  getTotal();
+
   document.getElementById("tbody").innerHTML = "";
   for (let i = 0; i < dataPros.length; i++) {
-    table = dataPros[i];
-
     document.getElementById("tbody").innerHTML += `
   
         <tr>
@@ -113,7 +122,7 @@ function display() {
         <td>${dataPros[i].discount}</td>
         <td>${dataPros[i].total}</td>
         <td>${dataPros[i].category}</td>
-        <td><button id="update">Update</button></td>
+        <td><button id="update" onclick="updateData(${i})">Update</button></td>
         <td><button id="delete" onclick="deletePro(${i})">Delete</button></td>
         </tr>
   `;
@@ -147,4 +156,24 @@ function deleteAll() {
   localStorage.clear();
   dataPros.splice(0);
   display();
+}
+
+// update
+
+function updateData(i) {
+  tmp = i;
+  title.value = dataPros[i].title;
+  price.value = dataPros[i].price;
+  taxes.value = dataPros[i].taxes;
+  ads.value = dataPros[i].ads;
+  discount.value = dataPros[i].discount;
+  getTotal();
+  count.style.display = "none";
+  category.value = dataPros[i].category;
+  submit.innerHTML = "Update";
+  mood = "update";
+  scroll({
+    top: 0,
+    behavior: "smooth",
+  });
 }
