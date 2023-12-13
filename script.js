@@ -67,22 +67,24 @@ submit.onclick = function () {
     count: count.value,
     category: category.value.toLowerCase(),
   };
-  // add product to array
-
-  if (mood === "create") {
-    // count
-    if (newpro.count > 1) {
-      for (let i = 0; i < newpro.count; i++) {
+  // check data
+  if (title.value != "" && price.value != "" && category.value != "") {
+    if (mood === "create") {
+      // count
+      if (newpro.count > 1) {
+        for (let i = 0; i < newpro.count; i++) {
+          // add product to array
+          dataPros.push(newpro);
+        }
+      } else {
         dataPros.push(newpro);
       }
     } else {
-      dataPros.push(newpro);
+      dataPros[tmp] = newpro;
+      mood = "create";
+      submit.innerHTML = "create";
+      count.style.display = "block";
     }
-  } else {
-    dataPros[tmp] = newpro;
-    mood = "create";
-    submit.innerHTML = "create";
-    count.style.display = "block";
   }
 
   //   add array to local storage
@@ -236,3 +238,5 @@ function searchData(value) {
   }
   document.getElementById("tbody").innerHTML = table;
 }
+
+// clean data
