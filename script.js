@@ -65,7 +65,15 @@ submit.onclick = function () {
     category: category.value,
   };
   // add product to array
-  dataPros.push(newpro);
+
+  // count
+  if (newpro.count > 1) {
+    for (let i = 0; i < newpro.count; i++) {
+      dataPros.push(newpro);
+    }
+  } else {
+    dataPros.push(newpro);
+  }
 
   //   add array to local storage
   localStorage.setItem("product", JSON.stringify(dataPros));
@@ -115,7 +123,7 @@ function display() {
 
   if (dataPros.length > 0) {
     deleteAllBtn.innerHTML = `
-    <button onclick="deleteAll()">Delete All</button>
+    <button onclick="deleteAll()">Delete All (${dataPros.length})</button>
     `;
   } else {
     deleteAllBtn.innerHTML = "";
