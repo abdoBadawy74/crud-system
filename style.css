@@ -110,7 +110,11 @@ th td {
   table {
     font-size: 10px;
   }
+  table th{
+    font-size: 7px;
+  }
   button {
-    font-size: 10px;
+    font-size: 7px;
+    height: 20px;
   }
 }
