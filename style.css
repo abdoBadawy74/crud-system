@@ -106,3 +106,11 @@ th td {
   background-color: #000;
   color: #fff;
 }
+@media screen and (max-width: 600px) {
+  table {
+    font-size: 10px;
+  }
+  button {
+    font-size: 10px;
+  }
+}
